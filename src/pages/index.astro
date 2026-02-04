@@ -1,0 +1,234 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+// Get latest 4 blog posts
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <p class="hero-label">// Welcome</p>
+          <h1>Giulio Sighieri</h1>
+          <p class="hero-subtitle">
+            Exploring the frontiers of <mark>Artificial Intelligence</mark>, 
+            <mark>Machine Learning</mark>, and <mark>Natural Language Processing</mark>.
+          </p>
+          <div class="hero-cta">
+            <a href="/blog" class="btn">Read the Blog →</a>
+            <a href="/about" class="btn btn-secondary">About Me</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest Posts -->
+      <section class="latest-posts">
+        <h2>// Latest Posts</h2>
+        <div class="posts-grid">
+          {posts.map((post) => (
+            <article class="post-card">
+              <a href={`/blog/${post.id}/`}>
+                <div class="post-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+                <span class="read-more">Read more →</span>
+              </a>
+            </article>
+          ))}
+        </div>
+        <div class="view-all">
+          <a href="/blog" class="btn">View All Posts →</a>
+        </div>
+      </section>
+    </main>
+    <Footer />
+
+    <style>
+      main {
+        padding-top: 6rem; /* Account for fixed header */
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 2rem;
+        position: relative;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(206, 255, 26, 0.03) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero-label {
+        font-size: 0.9rem;
+        color: var(--accent-lime);
+        margin-bottom: 1rem;
+        letter-spacing: 0.1em;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        color: #f5f5f5;
+        text-shadow: 0 0 40px rgba(206, 255, 26, 0.3), 0 0 80px rgba(206, 255, 26, 0.15);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero-subtitle mark {
+        background: var(--accent-lime);
+        color: var(--bg-primary);
+        padding: 0.1em 0.4em;
+        border-radius: 3px;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Latest Posts Section */
+      .latest-posts {
+        padding: 4rem 0;
+      }
+
+      .latest-posts h2 {
+        color: var(--accent-lime);
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.15em;
+        text-align: center;
+      }
+
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .post-card {
+        border: 1px solid var(--border-default);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        transition: all var(--transition-base);
+        background-color: var(--bg-card);
+      }
+
+      .post-card:hover {
+        border-color: var(--accent-lime);
+        box-shadow: var(--glow-lime);
+      }
+
+      .post-card a {
+        text-decoration: none;
+        display: block;
+      }
+
+      .post-meta {
+        margin-bottom: 0.75rem;
+      }
+
+      .post-meta time {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .post-card h3 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        text-transform: none;
+        letter-spacing: normal;
+      }
+
+      .post-card p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.5;
+      }
+
+      .read-more {
+        font-size: 0.85rem;
+        color: var(--accent-lime);
+        transition: color var(--transition-fast);
+      }
+
+      .post-card:hover .read-more {
+        color: var(--text-primary);
+      }
+
+      .view-all {
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.25rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </body>
+</html>

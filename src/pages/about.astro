@@ -1,0 +1,225 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`About | ${SITE_TITLE}`} description="About Giulio Sighieri - AI/ML enthusiast and researcher." />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="about-header">
+        <p class="about-label">// About</p>
+        <h1>Giulio Sighieri</h1>
+        <p class="subtitle">AI & Machine Learning Enthusiast</p>
+      </section>
+
+      <section class="about-content">
+        <div class="section">
+          <h2>I. Who I Am</h2>
+          <p>
+            I'm passionate about pushing the boundaries of what's possible with 
+            <mark>Artificial Intelligence</mark> and <mark>Machine Learning</mark>. 
+            This blog is my space to explore ideas, share learnings, and document 
+            my journey through the fascinating world of AI.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>II. What I Write About</h2>
+          <ul class="topics-list">
+            <li>
+              <span class="topic-marker">→</span>
+              <span class="topic-name">Machine Learning</span>
+              <span class="topic-desc">Deep dives into algorithms, architectures, and implementations</span>
+            </li>
+            <li>
+              <span class="topic-marker">→</span>
+              <span class="topic-name">Natural Language Processing</span>
+              <span class="topic-desc">Language models, transformers, and text understanding</span>
+            </li>
+            <li>
+              <span class="topic-marker">→</span>
+              <span class="topic-name">AI Research</span>
+              <span class="topic-desc">Paper reviews, emerging trends, and research explorations</span>
+            </li>
+            <li>
+              <span class="topic-marker">→</span>
+              <span class="topic-name">Tutorials</span>
+              <span class="topic-desc">Practical guides and hands-on implementations</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>III. Connect</h2>
+          <p>
+            Find me on other platforms or reach out for collaborations:
+          </p>
+          <ul class="connect-list">
+            <li>
+              <span class="link-marker">→</span>
+              <a href="https://github.com/WindyITS" target="_blank">GitHub</a>
+            </li>
+            <li>
+              <span class="link-marker">→</span>
+              <a href="https://www.linkedin.com/in/giulio-sighieri-052032346/" target="_blank">LinkedIn</a>
+            </li>
+            <li>
+              <span class="link-marker">→</span>
+              <a href="https://x.com/w_giulius" target="_blank">X</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <Footer />
+
+    <style>
+      main {
+        padding-top: 6rem;
+        max-width: 800px;
+      }
+
+      .about-header {
+        text-align: center;
+        padding: 4rem 0;
+      }
+
+      .about-label {
+        font-size: 0.9rem;
+        color: var(--accent-lime);
+        margin-bottom: 1rem;
+        letter-spacing: 0.15em;
+      }
+
+      .about-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-transform: none;
+        letter-spacing: normal;
+      }
+
+      .subtitle {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .about-content {
+        padding: 2rem 0 4rem;
+      }
+
+      .section {
+        margin-bottom: 4rem;
+      }
+
+      .section h2 {
+        font-size: 1rem;
+        color: var(--accent-lime);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.1em;
+      }
+
+      .section p {
+        font-size: 1rem;
+        color: var(--text-primary);
+        line-height: 1.8;
+      }
+
+      .section mark {
+        background: var(--accent-lime);
+        color: var(--bg-primary);
+        padding: 0.1em 0.3em;
+        border-radius: 2px;
+      }
+
+      .topics-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .topics-list li {
+        display: grid;
+        grid-template-columns: 30px 200px 1fr;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-default);
+        align-items: baseline;
+      }
+
+      .topics-list li:last-child {
+        border-bottom: none;
+      }
+
+      .topic-marker {
+        color: var(--accent-lime);
+      }
+
+      .topic-name {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .topic-desc {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .connect-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0 0;
+      }
+
+      .connect-list li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 0;
+      }
+
+      .link-marker {
+        color: #ceff1a;
+      }
+
+      .connect-list a {
+        color: #f5f5f5;
+        text-decoration: none;
+        transition: color 150ms ease;
+      }
+
+      .connect-list a:hover {
+        color: #ceff1a;
+      }
+
+      @media (max-width: 768px) {
+        .about-header h1 {
+          font-size: 2rem;
+        }
+
+        .topics-list li {
+          grid-template-columns: 30px 1fr;
+          gap: 0.5rem;
+        }
+
+        .topic-desc {
+          grid-column: 2;
+        }
+
+        .connect-links {
+          flex-direction: column;
+        }
+
+        .connect-links .btn {
+          text-align: center;
+        }
+      }
+    </style>
+  </body>
+</html>
