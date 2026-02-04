@@ -49,7 +49,7 @@ const formatDate = (date: Date) => {
         <div class="posts-grid">
           {posts.map((post) => (
             <article class="post-card">
-              <a href={`/blog/${post.id}/`}>
+              <a href={`/blog/blog/${post.id}/`}>
                 <div class="post-meta">
                   <time datetime={post.data.pubDate.toISOString()}>
                     {formatDate(post.data.pubDate)}
