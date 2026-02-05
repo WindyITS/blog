@@ -2,6 +2,8 @@
 
 A personal blog exploring the frontiers of Artificial Intelligence, Machine Learning, and Natural Language Processing.
 
+I'm not a web developer. Claude and Gemini are the real creators, I'm just the designer! 
+
 🔗 **Live site:** [windyits.github.io/blog](https://windyits.github.io/blog/)
 
 ## About
