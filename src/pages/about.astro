@@ -1,14 +1,17 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE } from "../consts";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={`About | ${SITE_TITLE}`} description="About Giulio Sighieri - AI/ML enthusiast and researcher." />
+    <BaseHead
+      title={`About | ${SITE_TITLE}`}
+      description="About Giulio Sighieri - AI/ML enthusiast and researcher."
+    />
   </head>
   <body>
     <Header />
@@ -23,10 +26,11 @@ import { SITE_TITLE } from '../consts';
         <div class="section">
           <h2>I. Who I Am</h2>
           <p>
-            I'm passionate about pushing the boundaries of what's possible with 
-            <mark>Artificial Intelligence</mark> and <mark>Machine Learning</mark>. 
-            This blog is my space to explore ideas, share learnings, and document 
-            my journey through the fascinating world of AI.
+            I'm passionate about pushing the boundaries of what's possible with
+            <mark>Artificial Intelligence</mark> and <mark
+              >Machine Learning</mark
+            >. This blog is my space to explore ideas, share learnings, and
+            document my journey through the fascinating world of AI.
           </p>
         </div>
 
@@ -36,31 +40,37 @@ import { SITE_TITLE } from '../consts';
             <li>
               <span class="topic-marker">→</span>
               <span class="topic-name">Machine Learning</span>
-              <span class="topic-desc">Deep dives into algorithms, architectures, and implementations</span>
+              <span class="topic-desc"
+                >Deep dives into algorithms, architectures, and implementations</span
+              >
             </li>
             <li>
               <span class="topic-marker">→</span>
               <span class="topic-name">Natural Language Processing</span>
-              <span class="topic-desc">Language models, transformers, and text understanding</span>
+              <span class="topic-desc"
+                >Language models, transformers, and text understanding</span
+              >
             </li>
             <li>
               <span class="topic-marker">→</span>
               <span class="topic-name">AI Research</span>
-              <span class="topic-desc">Paper reviews, emerging trends, and research explorations</span>
+              <span class="topic-desc"
+                >Paper reviews, emerging trends, and research explorations</span
+              >
             </li>
             <li>
               <span class="topic-marker">→</span>
               <span class="topic-name">Tutorials</span>
-              <span class="topic-desc">Practical guides and hands-on implementations</span>
+              <span class="topic-desc"
+                >Practical guides and hands-on implementations</span
+              >
             </li>
           </ul>
         </div>
 
         <div class="section">
-          <h2>III. Connect</h2>
-          <p>
-            Find me on other platforms or reach out for collaborations:
-          </p>
+          <h2>III. Where to connect</h2>
+          <p>Find me on other platforms or reach out for collaborations:</p>
           <ul class="connect-list">
             <li>
               <span class="link-marker">→</span>
@@ -68,7 +78,10 @@ import { SITE_TITLE } from '../consts';
             </li>
             <li>
               <span class="link-marker">→</span>
-              <a href="https://www.linkedin.com/in/giulio-sighieri-052032346/" target="_blank">LinkedIn</a>
+              <a
+                href="https://www.linkedin.com/in/giulio-sighieri-052032346/"
+                target="_blank">LinkedIn</a
+              >
             </li>
             <li>
               <span class="link-marker">→</span>
